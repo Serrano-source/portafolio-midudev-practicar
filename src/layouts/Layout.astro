@@ -1,4 +1,8 @@
 ---
+import Header from '../components/header.astro';
+// Supports weights 100-900
+import '@fontsource-variable/onest';
+
 interface Props {
 	title: string;
 }
@@ -17,35 +21,25 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<Header />
 		<slot />
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+/*Esto lo que hace es que le estamos diciendo los colores por efecto que el navegador cree que sorportamos. Por ejemplo si tenemos el tema en blanco se veran en negro y si no al reves*/
+		color-scheme: light dark;
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		font-family: "Onest Variable" system-ui, sans-serif;
+		
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	body {
+		background: #050505;
+		display: flex;
+		justify-content: center;
+		min-height: 100vh;
 	}
+	
 </style>
